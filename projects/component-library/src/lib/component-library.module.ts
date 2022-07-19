@@ -13,7 +13,8 @@ defineCustomElements(window);
   imports: [
   ],
   exports: [
-    DIRECTIVES
+    DIRECTIVES,
+    StylesComponent
   ]
 })
 export class ComponentLibraryModule { }
