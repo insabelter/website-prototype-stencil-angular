@@ -7,7 +7,6 @@ import { Components } from '@insabelter/component-library-stencil/dist/component
 
 
 
-
 export declare interface LibCard extends Components.LibCard {}
 
 @ProxyCmp({
@@ -17,7 +16,7 @@ export declare interface LibCard extends Components.LibCard {}
 @Component({
   selector: 'lib-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
+  template: '<lib-styles></lib-styles><ng-content></ng-content>',
   inputs: ['card_title']
 })
 export class LibCard {
@@ -44,7 +43,7 @@ export declare interface LibTag extends Components.LibTag {
 @Component({
   selector: 'lib-tag',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
+  template: '<lib-styles></lib-styles><ng-content></ng-content>',
   inputs: ['tag', 'tags']
 })
 export class LibTag {
@@ -72,7 +71,7 @@ export declare interface LibTagInput extends Components.LibTagInput {
 @Component({
   selector: 'lib-tag-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
+  template: '<lib-styles></lib-styles><ng-content></ng-content>',
   inputs: ['placeholder', 'tags']
 })
 export class LibTagInput {
