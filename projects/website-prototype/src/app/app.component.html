@@ -1,0 +1,7 @@
+<lib-card card_title="Tag Input">
+  <lib-tag-input placeholder="Enter a name" [tags]="names"></lib-tag-input>
+</lib-card>
+<p>These are all the names:</p>
+<ul id="all_tags">
+  <li *ngFor="let name of names">{{ name }}</li>
+</ul>

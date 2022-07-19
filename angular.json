@@ -3,5 +3,130 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "component-library": {
+      "projectType": "library",
+      "root": "projects/component-library",
+      "sourceRoot": "projects/component-library/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/component-library/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/component-library/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/component-library/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/component-library/src/test.ts",
+            "tsConfig": "projects/component-library/tsconfig.spec.json",
+            "karmaConfig": "projects/component-library/karma.conf.js"
+          }
+        }
+      }
+    },
+    "website-prototype": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/website-prototype",
+      "sourceRoot": "projects/website-prototype/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/website-prototype",
+            "index": "projects/website-prototype/src/index.html",
+            "main": "projects/website-prototype/src/main.ts",
+            "polyfills": "projects/website-prototype/src/polyfills.ts",
+            "tsConfig": "projects/website-prototype/tsconfig.app.json",
+            "assets": [
+              "projects/website-prototype/src/favicon.ico",
+              "projects/website-prototype/src/assets"
+            ],
+            "styles": [
+              "projects/website-prototype/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/website-prototype/src/environments/environment.ts",
+                  "with": "projects/website-prototype/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "website-prototype:build:production"
+            },
+            "development": {
+              "browserTarget": "website-prototype:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "website-prototype:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/website-prototype/src/test.ts",
+            "polyfills": "projects/website-prototype/src/polyfills.ts",
+            "tsConfig": "projects/website-prototype/tsconfig.spec.json",
+            "karmaConfig": "projects/website-prototype/karma.conf.js",
+            "assets": [
+              "projects/website-prototype/src/favicon.ico",
+              "projects/website-prototype/src/assets"
+            ],
+            "styles": [
+              "projects/website-prototype/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
   }
 }
