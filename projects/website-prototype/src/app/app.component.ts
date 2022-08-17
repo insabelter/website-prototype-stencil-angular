@@ -9,9 +9,14 @@ import { Event } from '@angular/router';
 export class AppComponent {
   title = 'website-prototype';
 
-  names: string[] = ['Anita', 'Bob'];
+  groceries: string[] = ['Mehl', 'Eier', 'Birnen', 'Mehl'];
 
-  @HostListener('tagsChanged',['$event.detail']) onTagsChanged(names: string[]) {
-    this.names = names;
+  @HostListener('tagsChanged',['$event.detail']) onTagsChanged(groceries: string[]) {
+    this.groceries = groceries;
+  }
+
+  sortGroceries() {
+    var sortedGroceries = [...new Set(this.groceries)].sort();
+    return sortedGroceries;
   }
 }

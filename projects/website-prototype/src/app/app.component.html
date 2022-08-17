@@ -1,9 +1,13 @@
 <lib-styles></lib-styles>
-<p>This is the Stencil Library Test Website in Angular</p>
-<lib-card card_title="Tag Input">
-  <lib-tag-input placeholder="Enter a name" [tags]="names"></lib-tag-input>
+<h1>Testwebseite</h1>
+<h2>Prototyp der Technologie Stencil in Angular</h2>
+
+<lib-card card_title="Einkaufsliste">
+  <lib-tag-input placeholder="Zutat hinzufügen" [tags]="groceries"></lib-tag-input>
 </lib-card>
-<p>These are all the names:</p>
-<ul id="all_tags">
-  <li *ngFor="let name of names">{{ name }}</li>
-</ul>
+
+<lib-card card_title="Sortierte Zutaten:">
+  <ul id="all_tags">
+    <li *ngFor="let tag of sortGroceries()">{{ tag }}</li>
+  </ul>
+</lib-card>
